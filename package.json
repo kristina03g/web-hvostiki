@@ -18,7 +18,9 @@
     "sequelize": "^6.30.0"
   },
   "devDependencies": {
+    "cjs-loader": "^0.1.0",
     "concurrently": "^7.6.0",
+    "cors": "^2.8.5",
     "nodemon": "^2.0.22"
   }
 }
