@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        client_id: {
+        req_client_id: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        pet_id: {
+        req_pet_id: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
@@ -35,5 +35,9 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     })
+    Request.associate = function(models) {
+        Request.belongsTo(models.client, {foreignKey: 'req_client_id'});
+        Request.belongsTo(models.pet, {foreignKey: 'req_pet_id'});
+    };
     return Request
 }

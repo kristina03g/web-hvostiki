@@ -42,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     })
+    Pet.associate = function(models) {
+        Pet.hasMany(models.request, {foreignKey: 'req_pet_id', sourceKey: 'pet_id'});
+    };
     return Pet
 }
   

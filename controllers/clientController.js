@@ -1,11 +1,18 @@
 const { DataTypes } = require('sequelize')
 const db = require('../models')
+const sequelize = db.sequelize
 
 const Admin = db.admins
 const Client = db.clients
 const Donation = db.donations
 const Pet = db.pets
 const Request = db.requests
+
+//const Admin = db.models.Admin
+//const Client = db.models.Client
+//const Donation = db.models.Donation
+//const Pet = db.models.Pet
+//const Request = db.models.Request
 
 // 1. create client
 
@@ -42,7 +49,7 @@ const getClientByLogin = async (req, res) => {
 
 const getClientStatistics = async (req, res) => {
 
-    let clientsRegs = await Client.findAll({attributes: ['client_reg_date', sequelize.fn('count', sequelize.col('client_id'))], group: ['client_reg_date']})
+    let clientsRegs = await Client.findAll({attributes: ['client_reg_date', [sequelize.fn('count', sequelize.col('client_id')), 'n_clients']], group: ['client_reg_date']})
     res.status(200).send(clientsRegs)
     
 }

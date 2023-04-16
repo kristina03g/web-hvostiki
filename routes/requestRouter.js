@@ -2,17 +2,23 @@ const requestController = require('../controllers/requestController.js')
 
 const router = require('express').Router()
 
+
+
 router.post('/addTakeRequest', requestController.addTakeRequest)
 
 router.post('/addGiveRequest', requestController.addGiveRequest)
 
-router.get('/:idHistory', requestController.getRequestHistory)
+
 
 router.get('/getAccepted', requestController.getAcceptedRequests)
 
 router.get('/getApproved', requestController.getApprovedRequests)
 
 router.get('/getRejected', requestController.getRejectedRequests)
+
+router.get('/:idHistory', requestController.getRequestHistory)
+
+
 
 router.put('/:idAcceptedToOk', requestController.updateAcceptedRequestsToOk)
 

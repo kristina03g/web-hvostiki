@@ -11,7 +11,7 @@ const Request = db.requests
 const addDonation = async (req, res) => {
 
     let info = {
-        client_id: req.body.client_id,
+        dnt_client_id: req.body.dnt_client_id,
         amount: req.body.amount,
         purpose: req.body.purpose,
         //donation_date: DataTypes.NOW
@@ -28,8 +28,8 @@ const addDonation = async (req, res) => {
 const getDonationStatistics = async (req, res) => {
 
     let donations = await Donation.findAll({
-        attributes: ['client_name', 'amount', 'donation_date'],
-        include: [{model: Client}]})
+        attributes: ['amount', 'donation_date'],
+        include: [{model: Client, attributes: ['client_name']}]})
     res.status(200).send(donations)
 
 }
@@ -39,9 +39,9 @@ const getDonationStatistics = async (req, res) => {
 const getDonationStatisticsSortByAmount = async (req, res) => {
 
     let donations = await Donation.findAll({
-        attributes: ['client_name', 'amount', 'donation_date'],
-        include: [{model: Client}],
-        order: [['amount', 'DESC'],]})
+        attributes: ['amount', 'donation_date'],
+        include: [{model: Client, attributes: ['client_name']}],
+        order: [['amount', 'DESC']]})
     res.status(200).send(donations)
 
 }
@@ -51,9 +51,9 @@ const getDonationStatisticsSortByAmount = async (req, res) => {
 const getDonationStatisticsSortByDate = async (req, res) => {
 
     let donations = await Donation.findAll({
-        attributes: ['client_name', 'amount', 'donation_date'],
-        include: [{model: Client}],
-        order: [['donation_date', 'DESC'],]})
+        attributes: ['amount', 'donation_date'],
+        include: [{model: Client, attributes: ['client_name']}],
+        order: [['donation_date', 'DESC']]})
     res.status(200).send(donations)
 
 }
