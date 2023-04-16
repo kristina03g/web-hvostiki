@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             allowNull: false
         },
-        client_id: {
+        dnt_client_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         amount: {
             type: DataTypes.FLOAT,
@@ -27,5 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     })
+    Donation.associate = function(models) {
+        Donation.belongsTo(models.client, {foreignKey: 'dnt_client_id'});
+    };
     return Donation
 }

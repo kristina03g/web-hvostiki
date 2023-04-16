@@ -2,10 +2,10 @@
   "name": "web-hvostiki",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "sever.js",
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "npm run start --prefix client"
   },
   "author": "",

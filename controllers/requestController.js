@@ -13,8 +13,8 @@ const addTakeRequest = async (req, res) => {
 
     let info = {
         request_type: 'Взять',
-        client_id: req.body.client_id,
-        pet_id: req.body.pet_id,
+        req_client_id: req.body.req_client_id,
+        req_pet_id: req.body.req_pet_id,
         purpose: '',
         request_status: 'Принято',
         //request_date: DataTypes.NOW
@@ -30,8 +30,8 @@ const addGiveRequest = async (req, res) => {
 
     let info = {
         request_type: 'Отдать',
-        client_id: req.body.client_id,
-        pet_id: req.body.pet_id,
+        req_client_id: req.body.req_client_id,
+        req_pet_id: req.body.req_pet_id,
         purpose: '',
         request_status: 'Принято',
         //request_date: DataTypes.NOW
@@ -47,9 +47,10 @@ const getRequestHistory = async (req, res) => {
 
     let idHistory = req.params.client_id
     let requests = await Request.findAll({
-        attributes: ['pet_photo', 'pet_name', 'pet_gender', 'pet_age', 'pet_status', 'request_date', 'request_status'],
-        where: {client_id: idHistory}, 
-        include: [{model: Pet}]})
+        attributes: ['request_date', 'request_status'],
+        include: [{model: Pet, attributes: ['pet_photo', 'pet_name', 'pet_gender', 'pet_age', 'pet_status']}],
+        where: {req_client_id: idHistory}
+        })
     res.status(200).send(requests)
 
 }
@@ -59,9 +60,9 @@ const getRequestHistory = async (req, res) => {
 const getAcceptedRequests = async (req, res) => {
 
     let requests = await Request.findAll({
-        attributes: ['request_type', 'request_date', 'purpose','client_name', 'client_bday', 'client_phone', 'client_address', 'pet_photo', 'pet_name', 'pet_gender', 'pet_breed', 'pet_age', 'pet_illness'],
-        where: {request_status: 'Принято'}, 
-        include: [{model: Pet, Client}]})
+        attributes: ['request_type', 'request_date', 'purpose'],
+        where: {request_status: 'Принято'},
+        include: [{model: Pet, attributes: ['pet_photo', 'pet_name', 'pet_gender', 'pet_breed', 'pet_age', 'pet_illness']}, {model: Client, attributes: ['client_name', 'client_bday', 'client_phone', 'client_address']}]})
     res.status(200).send(requests)
 
 }
@@ -71,9 +72,9 @@ const getAcceptedRequests = async (req, res) => {
 const getApprovedRequests = async (req, res) => {
 
     let requests = await Request.findAll({
-        attributes: ['request_type', 'request_date', 'purpose','client_name', 'client_bday', 'client_phone', 'client_address', 'pet_photo', 'pet_name', 'pet_gender', 'pet_breed', 'pet_age', 'pet_illness'],
-        where: {request_status: 'Одобрено'}, 
-        include: [{model: Pet, Client}]})
+        attributes: ['request_type', 'request_date', 'purpose'],
+        where: {request_status: 'Одобрено'},
+        include: [{model: Pet, attributes: ['pet_photo', 'pet_name', 'pet_gender', 'pet_breed', 'pet_age', 'pet_illness']}, {model: Client, attributes: ['client_name', 'client_bday', 'client_phone', 'client_address']}]})
     res.status(200).send(requests)
 
 }
@@ -83,9 +84,9 @@ const getApprovedRequests = async (req, res) => {
 const getRejectedRequests = async (req, res) => {
 
     let requests = await Request.findAll({
-        attributes: ['request_type', 'request_date', 'purpose','client_name', 'client_bday', 'client_phone', 'client_address', 'pet_photo', 'pet_name', 'pet_gender', 'pet_breed', 'pet_age', 'pet_illness'],
-        where: {request_status: 'Отклонено'}, 
-        include: [{model: Pet, Client}]})
+        attributes: ['request_type', 'request_date', 'purpose'],
+        where: {request_status: 'Отклонено'},
+        include: [{model: Pet, attributes: ['pet_photo', 'pet_name', 'pet_gender', 'pet_breed', 'pet_age', 'pet_illness']}, {model: Client, attributes: ['client_name', 'client_bday', 'client_phone', 'client_address']}]})
     res.status(200).send(requests)
 
 }

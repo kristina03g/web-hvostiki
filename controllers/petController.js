@@ -68,14 +68,12 @@ const getAllDogs = async (req, res) => {
 
 const updatePetToCancel = async (req, res) => {
 
-    let idCancel = req.params.request_id
+    let id = req.params.idCancel
+    console.log(id)
     let pet = await Pet.update({
         pet_status: "Не принят" }, {
-            where: {
-              request_id: idCancel,
-              pet_status: 'В ожидании'
-            },
-            include: [{model: Request}]
+            include: [{model: Request, where: {request_id: id}}],
+            where: {pet_status: 'В ожидании'}
         })
     res.status(200).send(pet)
 
@@ -88,11 +86,8 @@ const updatePetToShelter = async (req, res) => {
     let idShelter = req.params.request_id
     let pet = await Pet.update({
         pet_status: "В приюте" }, {
-            where: {
-              request_id: idShelter,
-              pet_status: 'В ожидании'
-            },
-            include: [{model: Request}]
+            where: {pet_status: 'В ожидании'},
+            include: [{model: Request, where: {request_id: idShelter}}]
         })
     res.status(200).send(pet)
 
@@ -105,11 +100,8 @@ const updatePetToHome = async (req, res) => {
     let idHome = req.params.request_id
     let pet = await Pet.update({
         pet_status: "Дома" }, {
-            where: {
-              request_id: idHome,
-              pet_status: 'В приюте'
-            },
-            include: [{model: Request}]
+            where: {pet_status: 'В приюте'},
+            include: [{model: Request, where: {request_id: idHome}}]
         })
     res.status(200).send(pet)
 

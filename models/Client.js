@@ -43,5 +43,9 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     })
+    Client.associate = function(models) {
+        Client.hasMany(models.donation, {foreignKey: 'dnt_client_id', sourceKey: 'client_id'});
+        Client.hasMany(models.request, {foreignKey: 'req_client_id', sourceKey: 'client_id'});
+    };
     return Client
 }
