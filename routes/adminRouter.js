@@ -1,11 +1,9 @@
-const adminController = require('../controllers/adminController.js')
-
-const router = require('express').Router()
+const Router = require('express')
+const router = new Router()
+const adminController = require('../controllers/adminController')
 
 router.post('/addAdmin', adminController.addAdmin)
-
-
-
-router.get('/admin_login/:login/admin_password/:password', adminController.getAdminByLogin)
+router.get('/getAdmin/:login', adminController.getAdminByLogin)
+//router.get('/getAdmin/:login/:password', adminController.getAdminByLogin)
 
 module.exports = router

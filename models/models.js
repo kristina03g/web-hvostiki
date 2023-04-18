@@ -1,4 +1,4 @@
-//const sequelize = require('../db')
+const sequelize = require('../db')
 const {DataTypes} = require('sequelize')
 
 const Admin = sequelize.define("admin", {
@@ -185,13 +185,13 @@ const Request = sequelize.define("request", {
 })
 
 Client.hasMany(Donation)
-Donation.belongsTo(Client)
+Donation.belongsTo(Client, {foreignKey: 'dnt_client_id'})
 
 Client.hasMany(Request)
-Request.belongsTo(Client)
+Request.belongsTo(Client, {foreignKey: 'req_client_id'})
 
 Pet.hasMany(Request)
-Request.belongsTo(Pet)
+Request.belongsTo(Pet, {foreignKey: 'req_pet_id'})
 
 
 module.exports = {

@@ -1,5 +1,11 @@
 const express = require('express')
 const cors = require('cors')
+const sequelize = require('./db')
+const models = require('./models/models')
+const router = require('./routes/index')
+const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+
+const PORT = process.env.PORT || 8081
 
 const app = express()
 
@@ -10,25 +16,40 @@ var corOptions = {
 app.use(cors(corOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-
-const PORT = process.env.PORT || 8081
-
-const routerAdmin = require('./routes/adminRouter.js')
-const routerClient = require('./routes/clientRouter.js')
-const routerDonation = require('./routes/donationRouter.js')
-const routerPet = require('./routes/petRouter.js')
-const routerRequest = require('./routes/requestRouter.js')
-app.use('/api/admins', routerAdmin)
-app.use('/api/clients', routerClient)
-app.use('/api/donations', routerDonation)
-app.use('/api/pets', routerPet)
-app.use('/api/requests', routerRequest)
+app.use('/api', router)
+app.use(errorHandler)
 
 
-app.get('/', (req, res) => {
-  res.json({message: 'hello from api'})
-})
+const start = async () => {
+  try {
 
-app.listen(PORT, () => {
-  console.log(`sever is running on port ${PORT}`)
-})
+    sequelize.authenticate()
+    .then(() => {
+      console.log('connected..')
+    })
+    .catch(err => {
+      console.log('Error' + err)
+    })
+
+    sequelize.sync({force: false})
+    .then(() => {
+      console.log('yes re-sync done!')
+    })
+
+    app.listen(PORT, () => {
+      console.log(`sever is running on port ${PORT}`)
+    })
+  } catch (e) {
+    console.log(e)
+  }
+
+}
+
+start()
+
+//app.use('/api/admins', routerAdmin)
+//app.use('/api/clients', routerClient)
+//app.use('/api/donations', routerDonation)
+//app.use('/api/pets', routerPet)
+//app.use('/api/requests', routerRequest)
+
