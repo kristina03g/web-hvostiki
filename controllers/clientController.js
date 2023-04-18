@@ -1,61 +1,84 @@
-const { DataTypes } = require('sequelize')
-const db = require('../models')
-const sequelize = db.sequelize
+const {Client} = require('../models/models')
+const ApiError = require('../error/ApiError')
+const sequelize = require('../db')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const sKey = "random_secret_key123"
 
-const Admin = db.admins
-const Client = db.clients
-const Donation = db.donations
-const Pet = db.pets
-const Request = db.requests
+const generateJwt = (id, login) => {
+    return jwt.sign({id, login}, sKey, {expiresIn: '24h'})
+}
 
-//const Admin = db.models.Admin
-//const Client = db.models.Client
-//const Donation = db.models.Donation
-//const Pet = db.models.Pet
-//const Request = db.models.Request
+class ClientController {
 
-// 1. create client
-
-const addClient = async (req, res) => {
-
-    let info = {
-        client_name: req.body.client_name,
-        client_bday: req.body.client_bday,
-        client_email: req.body.client_email,
-        client_login: req.body.client_login,
-        client_password: req.body.client_password,
-        client_phone: req.body.client_phone,
-        client_address: req.body.client_address,
-        //client_reg_date: DataTypes.NOW
+    async clientRegistration(req, res, next) {
+        const {client_name, client_bday, client_email, client_login, client_password, client_phone, client_address} = req.body
+        if (!client_login || !client_password) {
+            return next(ApiError.badRequest('Некорректный login или password'))
+        }
+        const candidate = await Client.findOne({where: {client_login}})
+        if (candidate) {
+            return next(ApiError.badRequest('Пользователь с таким login уже существует'))
+        }
+        const hashPassword = await bcrypt.hash(client_password, 5)
+        const client = await Client.create({client_name, client_bday, client_email, client_login, client_password: hashPassword, client_phone, client_address})
+        const token = generateJwt(client.client_id, client_login)
+        return res.json(token)
     }
 
-    const client = await Client.create(info)
-    res.status(200).send(client)
+    async clientLogin(req, res, next) {
+        const {client_login, client_password} = req.body
+        const client = await Client.findOne({where: {client_login}})
+        if (!client) {
+            return next(ApiError.internal('Пользователь не найден'))
+        }
+        let comparePassword = bcrypt.compareSync(client_password, client.client_password)
+        if (!comparePassword) {
+            return next(ApiError.internal('Указан неверный пароль'))
+        }
+        const token = generateJwt(client.client_id, client.client_login)
+        return res.json({token})
+    }
+
+    async clientCheck(req, res, next) {
+        const token = generateJwt(req.client.client_id, req.client.client_login)
+        return res.json(token)
+    }
+
+    // 1. create client
+    async addClient(req, res) {
+
+        let info = {
+            client_name: req.body.client_name,
+            client_bday: req.body.client_bday,
+            client_email: req.body.client_email,
+            client_login: req.body.client_login,
+            client_password: req.body.client_password,
+            client_phone: req.body.client_phone,
+            client_address: req.body.client_address,
+        }
+
+        const client = await Client.create(info)
+        res.status(200).send(client)
+
+    }
+
+    // 2. check client
+    async getClientByLogin(req, res) {
+
+        let client = await Client.findOne({where: {client_login: req.params.login}})
+        res.status(200).send(client)
+
+    }
+
+    // 3. get client registration statistics
+    async getClientStatistics(req, res) {
+
+        let clientsRegs = await Client.findAll({attributes: ['client_reg_date', [sequelize.fn('count', sequelize.col('client_id')), 'n_clients']], group: ['client_reg_date']})
+        res.status(200).send(clientsRegs)
+        
+    }
 
 }
 
-// 2. check client
-
-const getClientByLogin = async (req, res) => {
-
-    let login = req.params.client_login
-    let password = req.params.client_password
-    let client = await Client.findOne({where: {client_login: login, client_password: password}})
-    res.status(200).send(client)
-
-}
-
-// 3. get client registration statistics
-
-const getClientStatistics = async (req, res) => {
-
-    let clientsRegs = await Client.findAll({attributes: ['client_reg_date', [sequelize.fn('count', sequelize.col('client_id')), 'n_clients']], group: ['client_reg_date']})
-    res.status(200).send(clientsRegs)
-    
-}
-
-module.exports = {
-    addClient,
-    getClientByLogin,
-    getClientStatistics
-}
+module.exports = new ClientController()
