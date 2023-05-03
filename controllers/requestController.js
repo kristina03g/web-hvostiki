@@ -83,7 +83,7 @@ class RequestController {
         //let idHistory = req.params.client_id
         let requests = await Request.findAll({
             attributes: ['request_date', 'request_status'],
-            include: [{model: Pet, attributes: ['pet_photo', 'pet_name', 'pet_gender', 'pet_age', 'pet_status']}],
+            include: [{model: Pet, attributes: ['pet_photo', 'pet_name', 'pet_breed', 'pet_gender', 'pet_age', 'pet_status']}],
             where: {req_client_id: req.params.idHistory}
             })
         res.status(200).send(requests)
