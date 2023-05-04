@@ -13,13 +13,13 @@ const PersonalCabinet = observer(() => {
         <Container>
             <NavBar />
             <ClientNav />
-            <h2>
+            <h2 className='header'>
                 История заявок
             </h2>
-            <ListGroup>
-                <ListGroupItem>
-                    <Row >
-                        <Col>
+            <ListGroup >
+                <ListGroupItem className='list_group' >
+                    <Row className="text_red_center">
+                        <Col >
                             <div>Фото питомца</div>
                         </Col>
                         <Col>
@@ -44,9 +44,9 @@ const PersonalCabinet = observer(() => {
                             <div>Статус заявки</div>
                         </Col> 
                     </Row>
-                </ListGroupItem>
+                </ListGroupItem >
                     {hist.history.map(hist =>
-                    <ListGroupItem>
+                    <ListGroupItem className='list_group_white'>
                         <HistoryCard key={hist.id} hist={hist}/>
                     </ListGroupItem>
                     )}

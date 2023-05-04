@@ -10,29 +10,27 @@ const LoginForm = () => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
     return (
-        <Container className="d-flex justify-content-center align-items-center"
-        style={{height: window.innerHeight - 54}}
-        >
-            <Card style={{width: 600}} className='p-5'>
-                <h2 className="m-auto">Авторизация</h2>
-                <Form className="d-flex flex-column">
+        <Container className="login_form">
+            <Card style={{width: 600}} className='card_form'>
+                <h2 className="title_form">Авторизация</h2>
+                <Form className="form">
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Логин"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Пароль"
                     />
-                    <Row className="d-flex justify-content-between mt-3">
-                        <div>
-                            Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Регистрация</NavLink>
+                    <Row className="row_form">
+                        <div className='blText_redBcgrnd'>
+                            Нет аккаунта? <NavLink className='red_link' to={REGISTRATION_ROUTE}>Регистрация</NavLink>
                         </div>
-                        {!user.isAdmin && <Button className="mt-3 align-self-end" variant={"outline-success"} onClick={() => navigate(HOME_ROUTE)}>
+                        {!user.isAdmin && <Button className="button_with_contur" onClick={() => navigate(HOME_ROUTE)}>
                             Войти
                         </Button>
                         }
-                        {user.isAdmin && <Button className="mt-3 align-self-end" variant={"outline-success"} onClick={() => navigate(ADMIN_MAIN_ROUTE)}>
+                        {user.isAdmin && <Button className="button_with_contur" onClick={() => navigate(ADMIN_MAIN_ROUTE)}>
                             Войти
                         </Button>
                         }

@@ -20,18 +20,22 @@ const Requests = observer(() => {
     return (
         <Container>
             <NavBar />
-            <Row>
-                <Button onClick={() => navigate(STATISTICS_ROUTE)}>Статистика</Button>
-            </Row>
-            <Row>
+            <Button className='button_home' onClick={() => navigate(STATISTICS_ROUTE)}>Статистика</Button>
+            <Row className='header'>
                 <Col>
-                    <Button onClick={() => navigate(ACCEPTED_REQUESTS_ROUTE)}>Принятые заявки</Button>
+                    {isAccepted ? <Button className='button_selected' onClick={() => navigate(ACCEPTED_REQUESTS_ROUTE)}>Принятые заявки</Button> :
+                    <Button className='button' onClick={() => navigate(ACCEPTED_REQUESTS_ROUTE)}>Принятые заявки</Button>
+                    }
                 </Col>
                 <Col>
-                    <Button onClick={() => navigate(APPROVED_REQUESTS_ROUTE)}>Одобренные заявки</Button>
+                    {isApproved ? <Button className='button_selected' onClick={() => navigate(APPROVED_REQUESTS_ROUTE)}>Одобренные заявки</Button> :
+                    <Button className='button' onClick={() => navigate(APPROVED_REQUESTS_ROUTE)}>Одобренные заявки</Button>
+                    }
                 </Col>
                 <Col>
-                    <Button onClick={() => navigate(REJECTED_REQUESTS_ROUTE)}>Отклоненные заявки</Button>
+                    {isRejected ? <Button className='button_selected' onClick={() => navigate(REJECTED_REQUESTS_ROUTE)}>Отклоненные заявки</Button> :
+                    <Button className='button' onClick={() => navigate(REJECTED_REQUESTS_ROUTE)}>Отклоненные заявки</Button>
+                    }
                 </Col>
             </Row>
             {isAccepted && <AcceptedReqForm /> || isApproved && <ApprovedReqForm /> || isRejected && <RejectedReqForm/>}

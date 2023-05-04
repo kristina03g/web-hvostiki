@@ -9,7 +9,7 @@ import '../styles.css'
 const Error = () => {
     return (
         <Container>
-            <Navbar bg="light" variant="light">
+            <Navbar className='navbar_red'>
             <Container>
                 <Navbar.Brand>
                     <img
@@ -20,12 +20,12 @@ const Error = () => {
                     />
                 </Navbar.Brand>
                 <Nav>
-                    <h2>Хвостики</h2>
+                    <h2 className='text_red'>Хвостики</h2>
                 </Nav>
             </Container>
       </Navbar>
-      <h1>ERROR 404 NOT FOUND</h1>
-            <h3>Упс.. Что-то пошло не так!</h3>
+      <h1 className='header'>ERROR 404 NOT FOUND</h1>
+            <h3 className='text_red_center'>Упс.. Что-то пошло не так!</h3>
         </Container>
     );
 };

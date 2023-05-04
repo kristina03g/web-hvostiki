@@ -12,7 +12,7 @@ const ClientNav = observer(() => {
     const location = useLocation()
     const isHome = location.pathname === HOME_ROUTE
     return (
-        !isHome && <Button onClick={() => navigate(HOME_ROUTE)}>На главную</Button>
+        !isHome && <Button className='button_home' onClick={() => navigate(HOME_ROUTE)}>На главную</Button>
     );
 });
 

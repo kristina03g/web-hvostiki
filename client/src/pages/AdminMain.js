@@ -11,12 +11,12 @@ const AdminMain = () => {
     return (
         <Container>
             <NavBar />
-            <Row>
+            <Row className='admin_header'>
                 <Col>
-                    <Button variant="primary" className='mt-3' onClick={() => navigate(REQUESTS_ROUTE)}>Просмотреть заявки</Button>
+                    <Button className='button' onClick={() => navigate(REQUESTS_ROUTE)}>Просмотреть заявки</Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" className='mt-3' onClick={() => navigate(STATISTICS_ROUTE)}>Просмотреть статистику</Button>
+                    <Button className='button' onClick={() => navigate(STATISTICS_ROUTE)}>Просмотреть статистику</Button>
                 </Col>
             </Row>
         </Container>

@@ -9,7 +9,7 @@ const DonationCard = ({donation}) => {
             <div>{donation.name}</div>
         </Col>
         <Col>
-            <div>{donation.amount}</div>
+            <div>{donation.amount} руб.</div>
         </Col>
         <Col>
             <div>{donation.date}</div>

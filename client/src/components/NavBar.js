@@ -17,8 +17,8 @@ const NavBar = observer(() => {
     const isLogin = location.pathname === LOGIN_ROUTE
     const isReg = location.pathname === REGISTRATION_ROUTE
     return (
-        <Navbar bg="light" variant="light">
-            <Container>
+        <Navbar className='navbar_red'>
+            <Container className='container'>
                 <Navbar.Brand>
                     <img
                         src={logo}
@@ -28,16 +28,16 @@ const NavBar = observer(() => {
                     />
                 </Navbar.Brand>
                 <Nav>
-                    <h2>Хвостики</h2>
+                    <h2 className='text_red'>Хвостики</h2>
                 </Nav>
                 {user.isAdmin && !isLogin && !isReg &&
-                    <Nav className="ml-auto" style={{color: 'black'}}>
+                    <Nav className='text_red'>
                         <h6>Вы вошли как администратор</h6>
                     </Nav>
                 }
                 {!user.isAdmin && !isLogin && !isReg &&
                     <Nav className="ml-auto">
-                        <Button onClick={() => navigate(PERSONAL_CABINET_ROUTE)}>Личный кабинет</Button>
+                        <Button className='button' onClick={() => navigate(PERSONAL_CABINET_ROUTE)}>Личный кабинет</Button>
                     </Nav>
                 } 
             </Container>

@@ -11,11 +11,11 @@ const PetCard = ({pet}) => {
     let age = pet.age
     return (
         <Col md={3}>
-            <Card style={{ width: '18rem' }}>
+            <Card className='card_style'>
                 <Card.Img variant="top" height={250} src={pet.photo} />
-                <Card.Body>
-                    <Card.Title>{pet.name}</Card.Title>
-                    <Card.Text>
+                <Card.Body className='card_body'>
+                    <Card.Title className='text_red_center'>{pet.name}</Card.Title>
+                    <Card.Text className='text_white_center'>
                         <p>{pet.breed}</p>
                         <p>{pet.gender}</p>
                         {(age === 1 && <p>{age} год</p>) || 
@@ -24,7 +24,7 @@ const PetCard = ({pet}) => {
                         (age === 4 && <p>{age} года</p>) ||
                         <p>{age} лет</p>}
                     </Card.Text>
-                    <Button variant="primary" onClick={() => navigate(TAKE_PET_ROUTE)}>Забрать</Button>
+                    <Button className="button_center" onClick={() => navigate(TAKE_PET_ROUTE)}>Забрать</Button>
                 </Card.Body>
             </Card>            
         </Col>

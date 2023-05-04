@@ -8,45 +8,43 @@ import '../styles.css'
 const RegistrationForm = () => {
     const navigate = useNavigate()
     return (
-        <Container className="d-flex justify-content-center align-items-center"
-        style={{height: window.innerHeight - 54}}
-        >
-            <Card style={{width: 600}} className='p-5'>
-                <h2 className="m-auto">Регистрация</h2>
-                <Form className="d-flex flex-column">
+        <Container className="login_form">
+            <Card style={{width: 600}} className='card_form'>
+                <h2 className="title_form">Регистрация</h2>
+                <Form className="form">
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Имя"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Дата рождения"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Почта"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Номер телефона"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Адрес"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Логин"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Пароль"
                     />
-                    <Row className="d-flex justify-content-between mt-3">
-                        <div>
-                            Уже есть аккаунт? <NavLink to={LOGIN_ROUTE}>Вход</NavLink>
+                    <Row className="row_form">
+                        <div className='blText_redBcgrnd'>
+                            Уже есть аккаунт? <NavLink className='red_link' to={LOGIN_ROUTE}>Вход</NavLink>
                         </div>
-                        <Button className="mt-3 align-self-end" variant={"outline-success"} onClick={() => navigate(HOME_ROUTE)}>
+                        <Button className="button_with_contur" onClick={() => navigate(HOME_ROUTE)}>
                             Зарегистрироваться
                         </Button>
                     </Row>

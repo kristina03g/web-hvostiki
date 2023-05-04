@@ -9,13 +9,16 @@ const DonatStatForm = observer(() => {
     const {donation} = useContext(Context)
     return (
         <Container>
-            <DropdownButton id="dropdown-basic-button" title="Сортировка">
-                <Dropdown.Item href="#/action-1">по сумме</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">по дате</Dropdown.Item>
-            </DropdownButton>
+            <div class="dropdown">
+                <button class="dropbtn">Сортировка</button>
+                <div class="dropdown-content">
+                    <a href="#">по сумме</a>
+                    <a href="#">по дате</a>
+                </div>
+            </div>
             <ListGroup>
                     {donation.donations.map(donation =>
-                    <ListGroupItem>
+                    <ListGroupItem className='list_group_white'>
                         <DonationCard key={donation.id} donation={donation}/>
                     </ListGroupItem>
                     )}

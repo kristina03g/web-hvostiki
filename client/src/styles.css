@@ -1,5 +1,276 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
+
 * {
-    background-color: #cab8a3;
+    background-color: #140d33;
+    padding: 0;
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
 }
+
+.backgrnd_red {
+    background-color: #ae0740;
+}
+.navbar_red {
+    align-content: space-between;
+    background-color: #ae0740;
+    width: auto;
+}
+.text_red {
+    color: #fb4d3f;
+}
+.text_red_center {
+    text-align: center;
+    color: #fb4d3f;
+}
+.text_white {
+    color: white;
+}
+.text_white_center {
+    text-align: center;
+    color: white;
+}
+.admin_header {
+    margin-top: 10%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px dotted #ae0740;
+	padding: 5px;
+    margin-bottom: 3%;
+    text-align: center;
+    color: #fb4d3f;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px dotted #ae0740;
+	padding: 5px;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    text-align: center;
+    color: #fb4d3f;
+}
+.list_group {
+    margin: 0.5%;
+    text-align: center;
+    padding: 0;
+    border: 0;
+    outline-style:groove;
+    outline-color: #ae0740;
+}
+.list_group_white {
+    margin: 0.5%;
+    text-align: center;
+    color: white;
+    padding: 0;
+    border: 0;
+    outline-style:groove;
+    outline-color: #ae0740;
+}
+.login_form {
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fb4d3f;
+}
+.title_form {
+    border-radius: 3%;
+    margin: auto;
+    color: #140d33;
+    background-color: #ae0740;
+}
+.card_form {
+    padding: 3%;
+    background-color: #ae0740;
+    border-radius: 5%;
+}
+.card_body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.card_style {
+    width: 18rem;
+    border: 0;
+    outline-style: groove;
+    outline-color: #ae0740;
+}
+.card_style_margin {
+    margin: 0 auto;
+    padding: 0;
+    margin-left: 14.25%;
+    margin-right: 13.5%;
+    width: 18rem;
+    border: 0;
+    outline-width: 5px;
+    outline-style: groove;
+    outline-color: #ae0740;
+}
+.row_style {
+    margin-top: 5%;
+    margin-bottom: 4%;
+}
+.form {
+    flex-direction: column;
+    display: flex;
+    background-color: #ae0740
+}
+.placehldr {
+    margin-top: 3%;
+    color: #140d33;
+}
+.row_form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+    background-color: #ae0740
+}
+.blText_redBcgrnd {
+    color: #140d33;
+    background-color: #ae0740
+}
+.red_link {
+    text-decoration: none;
+    border: dashed #140d33;
+    padding: 1%;
+    border-radius: 5%;
+    color:#140d33;
+    background-color:#ae0740;
+}
+.red_link:hover {
+    color: white;
+}
+.button_with_contur {
+    border: 0;
+    margin-top: 3%;
+    background-color: #ae0740;
+    align-self: self-end;
+    outline-style:groove;
+    outline-color: #140d33;
+}
+.button_with_contur:hover {
+    background-color: #140d33;
+    transform: scale(1.05);
+}
+.button_mrgn_top {
+    margin-top: 50%;
+    border: 0;
+    background-color: #ae0740;
+    align-self: self-end;
+    outline-style:groove;
+    outline-color: #140d33;
+}
+.button_mrgn_top:hover {
+    background-color: #140d33;
+    outline-style:groove;
+    outline-color: #ae0740;
+    transform: scale(1.2);
+}
+.button {
+    margin-bottom: 3.5%;
+    border: 0;
+    margin-top: 3%;
+    background-color: #ae0740;
+    align-self: self-end;
+    outline-style:groove;
+    outline-color: #140d33;
+}
+.button:hover {
+    background-color: #140d33;
+    outline-style:groove;
+    outline-color: #ae0740;
+    transform: scale(1.05);
+}
+.button_selected {
+    margin-bottom: 3.5%;
+    border: 0;
+    margin-top: 3%;
+    color: #ae0740;
+    background-color: white;
+    align-self: self-end;
+    outline-style:groove;
+    outline-color: #140d33;
+}
+.button_selected:hover {
+    background-color: #140d33;
+    outline-style:groove;
+    outline-color: #ae0740;
+    transform: scale(1.05);
+}
+.button_center {
+    border: 0;
+    margin-top: 3%;
+    background-color: #ae0740;
+    margin: 0 auto;
+    outline-style:groove;
+    outline-color: #140d33;
+}
+.button_center:hover {
+    background-color: #140d33;
+    outline-style:groove;
+    outline-color: #ae0740;
+    transform: scale(1.05);
+}
+.button_home {
+    border: 0;
+    margin-top: 1.5%;
+    background-color: #ae0740;
+    align-self: self-end;
+    outline-style:groove;
+    outline-color: #140d33;
+}
+.button_home:hover {
+    background-color: #140d33;
+    outline-style:groove;
+    outline-color: #ae0740;
+    transform: scale(1.05);
+}
+/* Кнопка выпадающего списка */
+.dropbtn {
+    background-color: #ae0740;
+    color: white;
+    padding: 10%;
+    border-radius: 10%;
+    border: 0;
+    align-self: self-end;
+    outline-style:groove;
+    outline-color: #140d33;
+    margin-bottom: 10%;
+  }
+  
+  /* Контейнер <div> - необходим для размещения выпадающего содержимого */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Выпадающее содержимое (скрыто по умолчанию) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    color: #ae0740;
+    background-color: #f1f1f1;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Ссылки внутри выпадающего списка */
+  .dropdown-content a {
+    color: #ae0740;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Изменение цвета выпадающих ссылок при наведении курсора */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Показать выпадающее меню при наведении курсора */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+  .dropdown:hover .dropbtn {background-color: #fb4d3f;}

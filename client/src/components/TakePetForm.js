@@ -7,50 +7,48 @@ import '../styles.css'
 const TakePetForm = () => {
     const navigate = useNavigate()
     return (
-        <Container className="d-flex justify-content-center align-items-center"
-        style={{height: window.innerHeight - 54}}
-        >
-            <Card style={{width: 600}} className='p-5'>
-                <h2 className="m-auto">Забрать питомца</h2>
-                <Form className="d-flex flex-column">
+        <Container className="login_form" >
+            <Card style={{width: 600}} className='card_form'>
+                <h2 className="title_form">Забрать питомца</h2>
+                <Form className="form">
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Кличка питомца"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Порода питомца"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Пол питомца"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Возраст питомца"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Ваше имя"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Ваш возраст"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Ваш номер телефона"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Ваш адрес"
                     />
                     <Form.Control
-                        className="mt-3"
+                        className="placehldr"
                         placeholder="Причина заявки"
                     />
-                    <Row className="d-flex justify-content-between mt-3">
-                        <Button className="mt-3 align-self-end" variant={"outline-success"} onClick={() => navigate(HOME_ROUTE)}>
+                    <Row className="row_form">
+                        <Button className="button_with_contur" onClick={() => navigate(HOME_ROUTE)}>
                             Отправить заявку
                         </Button>
                     </Row>

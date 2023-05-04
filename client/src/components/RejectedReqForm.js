@@ -11,7 +11,7 @@ const RejectedReqForm = observer(() => {
         <Container>
             <ListGroup>
                     {request.rejected.map(request =>
-                    <ListGroupItem>
+                    <ListGroupItem className='list_group_white'>
                         <RequestCard key={request.id} request={request}/>
                     </ListGroupItem>
                     )}

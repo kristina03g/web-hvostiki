@@ -14,27 +14,27 @@ const Home = () => {
     return (
         <Container>
             <NavBar />
-            <Row>
-                <Card style={{ width: '18rem' }}>
+            <Row className='row_style'>
+                <Card className='card_style_margin' >
                     <Card.Img variant="top" height={450} src={cat} />
-                    <Card.Body>
-                        <Button variant="primary" onClick={() => navigate(ALL_CATS_ROUTE)}>Взять кошку</Button>
+                    <Card.Body className='card_body'>
+                        <Button className='button_center' onClick={() => navigate(ALL_CATS_ROUTE)}>Взять кошку</Button>
                     </Card.Body>
                 </Card>
 
-                <Card style={{ width: '18rem' }}>
+                <Card className='card_style_margin'>
                     <Card.Img variant="top" height={450} src={dog} />
-                    <Card.Body>
-                        <Button variant="primary" onClick={() => navigate(ALL_DOGS_ROUTE)}>Взять собаку</Button>
+                    <Card.Body className='card_body'>
+                        <Button className='button_center' onClick={() => navigate(ALL_DOGS_ROUTE)}>Взять собаку</Button>
                     </Card.Body>
                 </Card>
             </Row>
-            <Row>
+            <Row className="header">
                 <Col>
-                    <Button variant="primary" className='mt-3' onClick={() => navigate(GIVE_PET_ROUTE)}>Отдать питомца</Button>
+                    <Button className='button' onClick={() => navigate(GIVE_PET_ROUTE)}>Отдать питомца</Button>
                 </Col>
                 <Col>
-                    <Button variant="primary" className='mt-3' onClick={() => navigate(DONATION_ROUTE)}>Помочь приюту</Button>
+                    <Button className='button' onClick={() => navigate(DONATION_ROUTE)}>Помочь приюту</Button>
                 </Col>
             </Row>
         </Container>

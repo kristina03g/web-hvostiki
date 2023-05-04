@@ -8,7 +8,6 @@ const RequestCard = ({request}) => {
     (request.age === 3 && <div>{request.age} года</div>) ||
     (request.age === 4 && <div>{request.age} года</div>) ||
     <div>{request.age} лет</div>
-    console.log(age)
     return (
     <Row >
         <Col>
@@ -26,10 +25,10 @@ const RequestCard = ({request}) => {
             Причина заявки: {request.purpose}</p>
         </Col>
         <Col>
-            <Button>V</Button>
+            <Button className='button_mrgn_top'>V</Button>
         </Col>
         <Col>
-            <Button>X</Button>
+            <Button className='button_mrgn_top'>X</Button>
         </Col>
     </Row>
       

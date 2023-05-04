@@ -18,15 +18,17 @@ const Statistics = observer(() => {
     return (
         <Container>
             <NavBar />
-            <Row>
-            <Button onClick={() => navigate(REQUESTS_ROUTE)}>Заявки</Button>
-            </Row>
-            <Row>
+            <Button className='button_home' onClick={() => navigate(REQUESTS_ROUTE)}>Заявки</Button>
+            <Row className='header'>
                 <Col>
-                    <Button onClick={() => navigate(DONATION_STATISTICS_ROUTE)}>Статистика пожертвований</Button>
+                    {isDonatStat ? <Button className='button_selected' onClick={() => navigate(DONATION_STATISTICS_ROUTE)}>Статистика пожертвований</Button> :
+                    <Button className='button' onClick={() => navigate(DONATION_STATISTICS_ROUTE)}>Статистика пожертвований</Button>
+                    }
                 </Col>
                 <Col>
-                    <Button onClick={() => navigate(CLIENT_STATISTICS_ROUTE)}>Статистика регистраций</Button>
+                    {isClientStat ? <Button className='button_selected' onClick={() => navigate(CLIENT_STATISTICS_ROUTE)}>Статистика регистраций</Button> :
+                    <Button className='button' onClick={() => navigate(CLIENT_STATISTICS_ROUTE)}>Статистика регистраций</Button>
+                    }
                 </Col>
             </Row>
             {isClientStat && <ClientStatForm /> || isDonatStat && <DonatStatForm /> }

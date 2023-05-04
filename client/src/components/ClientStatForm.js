@@ -12,7 +12,7 @@ const ClientStatForm = observer(() => {
         <Container>
             <ListGroup>
                 {regs.registrations.map(regs =>
-                    <ListGroupItem>
+                    <ListGroupItem className='list_group_white'>
                         <RegsCard key={regs.id} regs={regs}/>
                     </ListGroupItem>
                     )}

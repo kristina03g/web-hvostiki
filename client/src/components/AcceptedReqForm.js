@@ -11,7 +11,7 @@ const AcceptedReqForm = observer(() => {
         <Container>
             <ListGroup>
                     {request.accepted.map(request =>
-                    <ListGroupItem>
+                    <ListGroupItem className='list_group_white'>
                         <RequestCard key={request.id} request={request}/>
                     </ListGroupItem>
                     )}
