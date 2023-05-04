@@ -1,0 +1,1 @@
+{"ast":null,"code":"export default function defaultErrorHandler(error) {\n  throw error;\n}","map":null,"metadata":{},"sourceType":"module"}
