@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import '../styles.css'
 
 const DonationCard = ({donation}) => {
     return (

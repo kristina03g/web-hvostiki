@@ -9,6 +9,7 @@ import ApprovedReqForm from '../components/ApprovedReqForm';
 import RejectedReqForm from '../components/RejectedReqForm';
 import { useNavigate } from 'react-router-dom';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const Requests = observer(() => {
     const navigate = useNavigate()

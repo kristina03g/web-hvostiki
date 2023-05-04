@@ -7,6 +7,7 @@ import cat from '../media/cat.jpeg'
 import { useNavigate } from 'react-router-dom';
 import { ALL_CATS_ROUTE, ALL_DOGS_ROUTE, DONATION_ROUTE, GIVE_PET_ROUTE } from '../utils/consts';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const Home = () => {
     const navigate = useNavigate()

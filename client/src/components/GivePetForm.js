@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { HOME_ROUTE } from '../utils/consts';
+import '../styles.css'
 
 const GivePetForm = () => {
     const navigate = useNavigate()

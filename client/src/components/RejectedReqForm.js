@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Context } from '../index';
 import { Container, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
 import RequestCard from './RequestCard';
+import '../styles.css'
 
 const RejectedReqForm = observer(() => {
     const {request} = useContext(Context)

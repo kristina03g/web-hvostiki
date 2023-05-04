@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Context } from '../index';
 import { Container, Row } from 'react-bootstrap';
 import PetCard from './PetCard';
+import '../styles.css'
 
 const AllDogs = observer(() => {
     const {pet} = useContext(Context)

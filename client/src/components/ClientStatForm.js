@@ -4,6 +4,7 @@ import { Context } from '../index';
 import { Container, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
 import RequestCard from './RequestCard';
 import RegsCard from './RegsCard';
+import '../styles.css'
 
 const ClientStatForm = observer(() => {
     const {regs} = useContext(Context)

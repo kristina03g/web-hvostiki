@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Context } from '../index';
 import { Container, ListGroup, ListGroupItem, Dropdown, DropdownButton } from 'react-bootstrap';
 import DonationCard from './DonationCard';
+import '../styles.css'
 
 const DonatStatForm = observer(() => {
     const {donation} = useContext(Context)

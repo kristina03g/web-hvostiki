@@ -3,6 +3,7 @@ import {Routes, Route, Navigate} from 'react-router-dom'
 import { adminRoutes, clientRoutes } from '../routes';
 import { ERROR_ROUTE, LOGIN_ROUTE } from '../utils/consts';
 import { Context } from '../index';
+import '../styles.css'
 
 const AppRouter = () => {
     const {user} = useContext(Context)

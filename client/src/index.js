@@ -7,6 +7,7 @@ import HistoryStore from './store/HistoryStore';
 import RequestStore from './store/RequestStore';
 import DonationStore from './store/DonationStore';
 import RegistrationStore from './store/RegistrationStore';
+import './styles.css'
 
 export const Context = createContext(null)
 

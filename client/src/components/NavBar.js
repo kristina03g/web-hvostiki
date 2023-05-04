@@ -8,6 +8,7 @@ import {Button, Container} from 'react-bootstrap';
 import {observer} from "mobx-react-lite";
 import logo from '../media/logo.png'
 import { useNavigate } from 'react-router-dom';
+import '../styles.css'
 
 const NavBar = observer(() => {
     const navigate = useNavigate()

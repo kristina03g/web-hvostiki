@@ -5,6 +5,7 @@ import { HOME_ROUTE } from '../utils/consts';
 import {observer} from "mobx-react-lite";
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import '../styles.css'
 
 const ClientNav = observer(() => {
     const navigate = useNavigate()
