@@ -4,6 +4,7 @@ import { Button, Card, Container, Form, Row } from 'react-bootstrap';
 import { NavLink} from 'react-router-dom';
 import {ADMIN_MAIN_ROUTE, HOME_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
 import {useNavigate} from 'react-router-dom'
+import '../styles.css'
 
 const LoginForm = () => {
     const {user} = useContext(Context)

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 import { TAKE_PET_ROUTE } from '../utils/consts';
+import '../styles.css'
 
 const PetCard = ({pet}) => {
     const navigate = useNavigate()

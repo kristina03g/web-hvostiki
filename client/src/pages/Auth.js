@@ -5,6 +5,7 @@ import LoginForm from '../components/LoginForm';
 import RegistrationForm from '../components/RegistrationForm';
 import { Container } from 'react-bootstrap';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const Auth = () => {
     const location = useLocation()

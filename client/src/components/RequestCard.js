@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import '../styles.css'
 
 const RequestCard = ({request}) => {
     let age = (request.age === 1 && <div>{request.age} год</div>) || 

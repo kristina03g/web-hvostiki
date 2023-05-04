@@ -3,6 +3,7 @@ import { Button, Card, Container, Form, Row } from 'react-bootstrap';
 import { NavLink} from 'react-router-dom';
 import { HOME_ROUTE, LOGIN_ROUTE} from '../utils/consts';
 import { useNavigate } from 'react-router-dom';
+import '../styles.css'
 
 const RegistrationForm = () => {
     const navigate = useNavigate()

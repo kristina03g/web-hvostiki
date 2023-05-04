@@ -8,6 +8,7 @@ import ClientStatForm from '../components/ClientStatForm';
 import DonatStatForm from '../components/DonatStatForm';
 import { useNavigate } from 'react-router-dom';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const Statistics = observer(() => {
     const navigate = useNavigate()

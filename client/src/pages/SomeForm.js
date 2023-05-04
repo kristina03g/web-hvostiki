@@ -7,6 +7,7 @@ import DonationForm from '../components/DonationForm';
 import {Container } from 'react-bootstrap';
 import ClientNav from '../components/ClientNav';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const SomeForm = () => {
     const location = useLocation()

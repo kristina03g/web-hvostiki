@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { REQUESTS_ROUTE, STATISTICS_ROUTE } from '../utils/consts';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const AdminMain = () => {
     const navigate = useNavigate()

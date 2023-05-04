@@ -6,6 +6,7 @@ import AllDogs from '../components/AllDogs';
 import { Container } from 'react-bootstrap';
 import ClientNav from '../components/ClientNav';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const AllPets = () => {
     const location = useLocation()

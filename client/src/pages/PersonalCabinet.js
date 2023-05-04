@@ -5,6 +5,7 @@ import { Container, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
 import HistoryCard from '../components/HistoryCard';
 import ClientNav from '../components/ClientNav';
 import NavBar from "../components/NavBar";
+import '../styles.css'
 
 const PersonalCabinet = observer(() => {
     const {hist} = useContext(Context)
