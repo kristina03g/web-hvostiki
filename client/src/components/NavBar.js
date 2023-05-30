@@ -9,6 +9,7 @@ import {observer} from "mobx-react-lite";
 import logo from '../media/logo.png'
 import { useNavigate } from 'react-router-dom';
 import '../styles.css'
+import jwtDecode from 'jwt-decode';
 
 const NavBar = observer(() => {
     const navigate = useNavigate()
@@ -16,6 +17,9 @@ const NavBar = observer(() => {
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
     const isReg = location.pathname === REGISTRATION_ROUTE
+
+    let userToken = localStorage.getItem('token')
+    let client_id = jwtDecode(userToken).id
     return (
         <Navbar className='navbar_red'>
             <Container className='container'>
@@ -37,7 +41,7 @@ const NavBar = observer(() => {
                 }
                 {!user.isAdmin && !isLogin && !isReg &&
                     <Nav className="ml-auto">
-                        <Button className='button' onClick={() => navigate(PERSONAL_CABINET_ROUTE)}>Личный кабинет</Button>
+                        <Button className='button' onClick={() => navigate(PERSONAL_CABINET_ROUTE + '/' + client_id)}>Личный кабинет</Button>
                     </Nav>
                 } 
             </Container>

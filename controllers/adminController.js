@@ -13,11 +13,11 @@ class AdminController {
     async adminRegistration(req, res, next) {
         const {admin_name, admin_login, admin_password, admin_phone} = req.body
         if (!admin_login || !admin_password) {
-            return next(ApiError.badRequest('Некорректный login или password'))
+            return next(ApiError.badRequest('Некорректный логин или пароль'))
         }
         const candidate = await Admin.findOne({where: {admin_login}})
         if (candidate) {
-            return next(ApiError.badRequest('Пользователь с таким login уже существует'))
+            return next(ApiError.badRequest('Пользователь с таким логином уже существует'))
         }
         const hashPassword = await bcrypt.hash(admin_password, 5)
         const admin = await Admin.create({admin_name, admin_login, admin_password: hashPassword, admin_phone})

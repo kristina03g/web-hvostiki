@@ -7,7 +7,7 @@ import { observer } from 'mobx-react-lite';
 import ClientStatForm from '../components/ClientStatForm';
 import DonatStatForm from '../components/DonatStatForm';
 import { useNavigate } from 'react-router-dom';
-import NavBar from "../components/NavBar";
+import AdminNavBar from "../components/AdminNavBar";
 import '../styles.css'
 
 const Statistics = observer(() => {
@@ -17,7 +17,7 @@ const Statistics = observer(() => {
     const isDonatStat = location.pathname === DONATION_STATISTICS_ROUTE
     return (
         <Container>
-            <NavBar />
+            <AdminNavBar />
             <Button className='button_home' onClick={() => navigate(REQUESTS_ROUTE)}>Заявки</Button>
             <Row className='header'>
                 <Col>

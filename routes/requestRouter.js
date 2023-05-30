@@ -3,16 +3,21 @@ const router = new Router()
 const requestController = require('../controllers/requestController')
 
 router.post('/addTakeRequest', requestController.addTakeRequest)
+
+router.post('/givePet', requestController.addGiveRequestPet)
+router.post('/takePet', requestController.addTakeRequest)
+router.post('/personalCabinet/:id', requestController.getRequestHistory)
+
 router.post('/addGiveRequestCat', requestController.addGiveRequestCat)
 router.post('/addGiveRequestDog', requestController.addGiveRequestDog)
-router.get('/getAccepted', requestController.getAcceptedRequests)
-router.get('/getApproved', requestController.getApprovedRequests)
-router.get('/getRejected', requestController.getRejectedRequests)
-router.get('/:idHistory', requestController.getRequestHistory)
-router.put('/updateAcceptedToOk/:idAcceptedToOk', requestController.updateAcceptedRequestsToOk)
-router.put('/updateAcceptedToCancel/:idAcceptedToCancel', requestController.updateAcceptedRequestsToCancel)
-router.put('/updateRejectedToCancel/:idRejected', requestController.updateRejectedRequestsToCancel)
-router.put('/updateApprovedToCancel/:idApprovedToCancel', requestController.updateApprovedRequestsToCancel)
-router.put('/updateApprovedToOk/:idApprovedToOk', requestController.updateApprovedRequestsToOk)
+router.post('/getAccepted', requestController.getAcceptedRequests)
+router.post('/getApproved', requestController.getApprovedRequests)
+router.post('/getRejected', requestController.getRejectedRequests)
+
+router.put('/updateAcceptedToOk/:id', requestController.updateAcceptedRequestsToOk)
+router.put('/updateAcceptedToCancel/:id', requestController.updateAcceptedRequestsToCancel)
+router.put('/updateRejectedToCancel/:id', requestController.updateRejectedRequestsToCancel)
+router.put('/updateApprovedToCancel/:id', requestController.updateApprovedRequestsToCancel)
+router.put('/updateApprovedToOk/:id', requestController.updateApprovedRequestsToOk)
 
 module.exports = router

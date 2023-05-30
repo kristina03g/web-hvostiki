@@ -34,7 +34,7 @@ class DonationController {
             attributes: ['amount', 'donation_date'],
             include: [{model: Client, attributes: ['client_name']}],
             order: [['amount', 'DESC']]})
-        res.status(200).send(donations)
+        return res.json({donations})
 
     }
 
@@ -45,7 +45,7 @@ class DonationController {
             attributes: ['amount', 'donation_date'],
             include: [{model: Client, attributes: ['client_name']}],
             order: [['donation_date', 'DESC']]})
-        res.status(200).send(donations)
+        return res.json({donations})
 
     }
 

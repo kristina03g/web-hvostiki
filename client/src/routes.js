@@ -7,9 +7,9 @@ import Requests from "./pages/Requests"
 import SomeForm from "./pages/SomeForm"
 import Statistics from "./pages/Statistics"
 import Error from "./pages/Error"
-import { ACCEPTED_REQUESTS_ROUTE, ADMIN_MAIN_ROUTE, ALL_CATS_ROUTE, ALL_DOGS_ROUTE, APPROVED_REQUESTS_ROUTE, REQUESTS_ROUTE, CLIENT_STATISTICS_ROUTE, STATISTICS_ROUTE, DONATION_ROUTE, DONATION_STATISTICS_ROUTE, GIVE_PET_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PERSONAL_CABINET_ROUTE, REGISTRATION_ROUTE, REJECTED_REQUESTS_ROUTE, TAKE_PET_ROUTE, ERROR_ROUTE } from "./utils/consts"
+import { ACCEPTED_REQUESTS_ROUTE, ADMIN_MAIN_ROUTE, ALL_CATS_ROUTE, ALL_DOGS_ROUTE, APPROVED_REQUESTS_ROUTE, REQUESTS_ROUTE, CLIENT_STATISTICS_ROUTE, STATISTICS_ROUTE, DONATION_ROUTE, DONATION_STATISTICS_ROUTE, GIVE_PET_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PERSONAL_CABINET_ROUTE, REGISTRATION_ROUTE, REJECTED_REQUESTS_ROUTE, TAKE_CAT_ROUTE, TAKE_DOG_ROUTE,ERROR_ROUTE } from "./utils/consts"
 
-export const clientRoutes = [
+export const userRoutes = [
     {
         path: LOGIN_ROUTE,
         Component: Auth
@@ -31,11 +31,15 @@ export const clientRoutes = [
         Component: Home
     },
     {
-        path: PERSONAL_CABINET_ROUTE,
+        path: PERSONAL_CABINET_ROUTE + '/:id',
         Component: PersonalCabinet
     },
     {
-        path: TAKE_PET_ROUTE,
+        path: TAKE_CAT_ROUTE + '/:id',
+        Component: SomeForm
+    },
+    {
+        path: TAKE_DOG_ROUTE + '/:id',
         Component: SomeForm
     },
     {
@@ -49,17 +53,6 @@ export const clientRoutes = [
     {
         path: ERROR_ROUTE,
         Component: Error
-    }
-]
-
-export const adminRoutes = [
-    {
-        path: LOGIN_ROUTE,
-        Component: Auth
-    },
-    {
-        path: REGISTRATION_ROUTE,
-        Component: Auth
     },
     {
         path: ADMIN_MAIN_ROUTE,
@@ -92,9 +85,13 @@ export const adminRoutes = [
     {
         path: DONATION_STATISTICS_ROUTE,
         Component: Statistics
-    },
+    }
+]
+
+/*export const adminRoutes = [
+    
     {
         path: ERROR_ROUTE,
         Component: Error
     }
-]
+]*/

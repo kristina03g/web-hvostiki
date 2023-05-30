@@ -6,14 +6,14 @@ import dog from '../media/dog.jpeg'
 import cat from '../media/cat.jpeg'
 import { useNavigate } from 'react-router-dom';
 import { ALL_CATS_ROUTE, ALL_DOGS_ROUTE, DONATION_ROUTE, GIVE_PET_ROUTE } from '../utils/consts';
-import NavBar from "../components/NavBar";
+import ClientNavBar from "../components/ClientNavBar";
 import '../styles.css'
 
 const Home = () => {
     const navigate = useNavigate()
     return (
         <Container>
-            <NavBar />
+            <ClientNavBar />
             <Row className='row_style'>
                 <Card className='card_style_margin' >
                     <Card.Img variant="top" height={450} src={cat} />

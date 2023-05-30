@@ -5,7 +5,7 @@ import AllCats from '../components/AllCats';
 import AllDogs from '../components/AllDogs';
 import { Container } from 'react-bootstrap';
 import ClientNav from '../components/ClientNav';
-import NavBar from "../components/NavBar";
+import ClientNavBar from "../components/ClientNavBar";
 import '../styles.css'
 
 const AllPets = () => {
@@ -14,7 +14,7 @@ const AllPets = () => {
     const dogs = location.pathname === ALL_DOGS_ROUTE
     return (
         <Container>
-            <NavBar />
+            <ClientNavBar />
             <ClientNav />
             {cats && <AllCats /> || dogs && <AllDogs />}
         </Container>
