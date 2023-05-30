@@ -1,21 +1,22 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import '../styles.css'
+import { observer } from 'mobx-react-lite';
 
-const DonationCard = ({donation}) => {
+const DonationCard = observer(({donation}) => {
     return (
     <Row >
         <Col>
-            <div>{donation.name}</div>
+            <div>{donation.client.client_name}</div>
         </Col>
         <Col>
             <div>{donation.amount} руб.</div>
         </Col>
         <Col>
-            <div>{donation.date}</div>
+            <div>{donation.donation_date}</div>
         </Col> 
     </Row>
     );
-};
+});
 
 export default DonationCard;

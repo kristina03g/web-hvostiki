@@ -3,56 +3,78 @@ const {Pet, Request} = require('../models/models')
 class PetController {
 
     // 1. create cat
-    async addCat(req, res) {
+    async addCat(req, res, next) {
+        try {
+            const {img} = req.files
+            console.log(req.files)
+            let fileName = uuid.v4() + ".jpg"
+            img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-        let info = {
-            pet_type: 'Кошка',
-            pet_photo: req.body.pet_photo,
-            pet_name: req.body.pet_name,
-            pet_breed: req.body.pet_breed,
-            pet_gender: req.body.pet_gender,
-            pet_age: req.body.pet_age,
-            pet_illness: req.body.pet_illness,
-            pet_status: 'В ожидании'
+            let info = {
+                pet_type: 'Кошка',
+                pet_photo: fileName,
+                pet_name: req.body.pet_name,
+                pet_breed: req.body.pet_breed,
+                pet_gender: req.body.pet_gender,
+                pet_age: req.body.pet_age,
+                pet_illness: req.body.pet_illness,
+                pet_status: 'В ожидании'
+            }
+
+            const pet = await Pet.create(info)
+            res.status(200).send(pet)
+
+    } catch (e) {
+        next(ApiError.badRequest(e.message))
         }
-
-        const pet = await Pet.create(info)
-        res.status(200).send(pet)
-
     }
 
     // 2. create dog
-    async addDog(req, res) {
+    async addDog(req, res, next) {
+        try {
+            const {img} = req.files
+            let fileName = uuid.v4() + ".jpg"
+            img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-        let info = {
-            pet_type: 'Собака',
-            pet_photo: req.body.pet_photo,
-            pet_name: req.body.pet_name,
-            pet_breed: req.body.pet_breed,
-            pet_gender: req.body.pet_gender,
-            pet_age: req.body.pet_age,
-            pet_illness: req.body.pet_illness,
-            pet_status: 'В ожидании'
+            let info = {
+                pet_type: 'Собака',
+                pet_photo: fileName,
+                pet_name: req.body.pet_name,
+                pet_breed: req.body.pet_breed,
+                pet_gender: req.body.pet_gender,
+                pet_age: req.body.pet_age,
+                pet_illness: req.body.pet_illness,
+                pet_status: 'В ожидании'
+            }
+
+            const pet = await Pet.create(info)
+            res.status(200).send(pet)
+
+    } catch (e) {
+        next(ApiError.badRequest(e.message))
         }
-
-        const pet = await Pet.create(info)
-        res.status(200).send(pet)
-
     }
 
     // 3. get all cats
     async getAllCats(req, res) {
 
-        let pets = await Pet.findAll({attributes: {exclude: ['pet_id', 'pet_type', 'pet_illness', 'pet_status']}, where: {pet_type: 'Кошка'}})
-        res.status(200).send(pets)
+        let pets = await Pet.findAll({attributes: {exclude: ['pet_illness', 'pet_status']}, where: {pet_type: 'Кошка'}})
+        return res.json({pets})
 
     }
 
     // 4. get all dogs
     async getAllDogs(req, res) {
 
-        let pets = await Pet.findAll({attributes: {exclude: ['pet_id', 'pet_type', 'pet_illness', 'pet_status']}, where: {pet_type: 'Собака'}})
-        res.status(200).send(pets)
+        let pets = await Pet.findAll({attributes: {exclude: ['pet_illness', 'pet_status']}, where: {pet_type: 'Собака'}})
+        return res.json({pets})
+
+    }
+
+    async getOnePet(req, res) {
+
+        let pet = await Pet.findOne({attributes: {include: ['pet_name', 'pet_breed', 'pet_gender', 'pet_age']}, where: {pet_id: req.params.id}})
+        return res.json({pet})
 
     }
 

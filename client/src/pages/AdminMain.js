@@ -3,14 +3,14 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { REQUESTS_ROUTE, STATISTICS_ROUTE } from '../utils/consts';
-import NavBar from "../components/NavBar";
+import AdminNavBar from "../components/AdminNavBar";
 import '../styles.css'
 
 const AdminMain = () => {
     const navigate = useNavigate()
     return (
         <Container>
-            <NavBar />
+            <AdminNavBar />
             <Row className='admin_header'>
                 <Col>
                     <Button className='button' onClick={() => navigate(REQUESTS_ROUTE)}>Просмотреть заявки</Button>

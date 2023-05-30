@@ -14,11 +14,11 @@ class ClientController {
     async clientRegistration(req, res, next) {
         const {client_name, client_bday, client_email, client_login, client_password, client_phone, client_address} = req.body
         if (!client_login || !client_password) {
-            return next(ApiError.badRequest('Некорректный login или password'))
+            return next(ApiError.badRequest('Некорректный логин или пароль'))
         }
         const candidate = await Client.findOne({where: {client_login}})
         if (candidate) {
-            return next(ApiError.badRequest('Пользователь с таким login уже существует'))
+            return next(ApiError.badRequest('Пользователь с таким логином уже существует'))
         }
         const hashPassword = await bcrypt.hash(client_password, 5)
         const client = await Client.create({client_name, client_bday, client_email, client_login, client_password: hashPassword, client_phone, client_address})
@@ -74,8 +74,8 @@ class ClientController {
     // 3. get client registration statistics
     async getClientStatistics(req, res) {
 
-        let clientsRegs = await Client.findAll({attributes: ['client_reg_date', [sequelize.fn('count', sequelize.col('client_id')), 'n_clients']], group: ['client_reg_date']})
-        res.status(200).send(clientsRegs)
+        let clientsRegs = await Client.findAll({attributes: [[sequelize.fn('month', sequelize.col('client_reg_date')), 'months'], [sequelize.fn('count', sequelize.col('client_id')), 'n_clients']], group: [sequelize.fn('month', sequelize.col('client_reg_date')), 'months'], limit: 6})
+        return res.json(clientsRegs)
         
     }
 

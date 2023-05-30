@@ -8,7 +8,7 @@ import AcceptedReqForm from '../components/AcceptedReqForm';
 import ApprovedReqForm from '../components/ApprovedReqForm';
 import RejectedReqForm from '../components/RejectedReqForm';
 import { useNavigate } from 'react-router-dom';
-import NavBar from "../components/NavBar";
+import AdminNavBar from "../components/AdminNavBar";
 import '../styles.css'
 
 const Requests = observer(() => {
@@ -19,7 +19,7 @@ const Requests = observer(() => {
     const isRejected = location.pathname === REJECTED_REQUESTS_ROUTE
     return (
         <Container>
-            <NavBar />
+            <AdminNavBar />
             <Button className='button_home' onClick={() => navigate(STATISTICS_ROUTE)}>Статистика</Button>
             <Row className='header'>
                 <Col>

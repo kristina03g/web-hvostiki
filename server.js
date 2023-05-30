@@ -1,23 +1,43 @@
 const express = require('express')
 const cors = require('cors')
+const fileUpload = require('express-fileupload')
+const methodOverride = require('method-override');
+const multipart = require('connect-multiparty');
+const bodyParser = require('body-parser')
 const sequelize = require('./db')
 const models = require('./models/models')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+const path = require('path')
 
 const PORT = process.env.PORT || 8081
 
 const app = express()
 
-var corOptions = {
-  origin: 'https://localhost:8081'
-}
+let corsOptions = {
+  origin: [ 'http://localhost:8081', 'http://localhost:3000' ]
+};
 
-app.use(cors(corOptions))
+app.use(cors(corsOptions))
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(fileUpload({}))
+
+app.use(methodOverride());
+//app.use(multipart());
+app.use(bodyParser({keepExtensions:true, uploadDir:path.join(__dirname,'/files')}))
+
+app.use(express.urlencoded({extended: false}))
 app.use('/api', router)
 app.use(errorHandler)
+
+/*app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, Content-Type');
+  next();
+})*/
 
 
 const start = async () => {

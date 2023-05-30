@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         pet_photo: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         },
         pet_name: {
