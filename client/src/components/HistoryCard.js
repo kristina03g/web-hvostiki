@@ -8,7 +8,7 @@ const HistoryCard = observer(({hist}) => {
     return (
     <Row >
         <Col>
-            <Image width={100} heigth={100} src={hist.pet.pet_photo}>
+            <Image width={100} heigth={100} src={process.env.REACT_APP_API_URL + hist.pet.pet_photo}>
             </Image>
         </Col>
         <Col>

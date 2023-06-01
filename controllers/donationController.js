@@ -1,10 +1,15 @@
 const {Donation, Client} = require('../models/models')
+const ApiError = require('../error/ApiError')
 
 class DonationController {
 
     // 1. create donation
-    async addDonation(req, res) {
+    async addDonation(req, res, next) {
 
+
+        //if (!req.body.dnt_client_id || !req.body.amount) {
+        //    return next(ApiError.con_refused('Необходимо заполнить все поля!'))
+        //}
         let info = {
             dnt_client_id: req.body.dnt_client_id,
             amount: req.body.amount,

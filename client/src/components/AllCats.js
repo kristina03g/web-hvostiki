@@ -20,7 +20,7 @@ const AllCats = observer(() => {
             <h1 className='header'>
                 Вот такие котики у нас сейчас есть
             </h1>
-            <Row className="row_form">
+            <Row className="row_form_pets">
                 {pet.pets.map(pet =>
                     <PetCard key={pet.pet_id} pet={pet}/>
                 )}

@@ -1,5 +1,7 @@
 const Router = require('express')
+const multer  = require("multer");
 const router = new Router()
+const upload = multer({dest:"../static"});
 const requestController = require('../controllers/requestController')
 
 router.post('/addTakeRequest', requestController.addTakeRequest)
