@@ -1,8 +1,7 @@
 import { $clientHost, $adminHost } from "./index";
 
-export const createPetAndRequest = async (pet_type, pet_name, pet_breed, pet_gender, pet_age, pet_illness, req_client_id, purpose, pet_photo) => {
-    req_client_id = String(req_client_id)
-    const {data} = await $clientHost.post('api/request/givePet', {pet_type, pet_name, pet_breed, pet_gender, pet_age, pet_illness, req_client_id, purpose, pet_photo})
+export const createPetAndRequest = async (petAndRequest) => {
+    const {data} = await $clientHost.post('api/request/givePet', petAndRequest)
     return data
 }
 

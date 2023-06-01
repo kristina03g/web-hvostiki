@@ -23,14 +23,23 @@ const GivePetForm = observer(() => {
     const [file, setFile] = useState(null)
 
     const selectFile = e => {
-        //console.log(e.target.files[0])
         setFile(e.target.files[0])
     }
 
     const newRequestPet = async() => {
         let userToken = localStorage.getItem('token')
         let req_client_id = jwtDecode(userToken).id
-        createPetAndRequest(petType, petName, petBreed, petGender, `${petAge}`, petIllness, req_client_id, purpose, file).then(data => navigate(HOME_ROUTE))
+        const formData = new FormData()
+        formData.append('pet_type', petType)
+        formData.append('pet_name', petName)
+        formData.append('pet_breed', petBreed)
+        formData.append('pet_gender', petGender)
+        formData.append('pet_age', `${petAge}`)
+        formData.append('pet_illness', petIllness)
+        formData.append('req_client_id', req_client_id)
+        formData.append('purpose', purpose)
+        formData.append('pet_photo', file)
+        createPetAndRequest(formData).then(data => navigate(HOME_ROUTE))
     }
 
     return (
@@ -58,7 +67,7 @@ const GivePetForm = observer(() => {
                     />
                     <Form.Control
                         className="placehldr"
-                        placeholder="Пол питомца"
+                        placeholder="Пол питомца: Мальчик или Девочка"
                         value={petGender}
                         onChange={e => setPetGender(e.target.value)}
                     />
@@ -67,6 +76,8 @@ const GivePetForm = observer(() => {
                         placeholder="Возраст питомца"
                         value={petAge}
                         onChange={e => setPetAge(Number(e.target.value))}
+                        type="number"
+                        min="0"
                     />
                     <Form.Control
                         className="placehldr"
@@ -85,12 +96,15 @@ const GivePetForm = observer(() => {
                         placeholder="Ваш возраст"
                         value={age}
                         onChange={e => setAge(e.target.value)}
+                        type="number"
+                        min="0"
                     />
                     <Form.Control
                         className="placehldr"
                         placeholder="Ваш номер телефона"
                         value={phone}
                         onChange={e => setPhone(e.target.value)}
+                        type="tel"
                     />
                     <Form.Control
                         className="placehldr"
@@ -107,6 +121,7 @@ const GivePetForm = observer(() => {
                     <Form.Control
                         className="placehldr"
                         type='file'
+                        accept=".png, .jpg"
                         onChange={selectFile}
                     />
                     

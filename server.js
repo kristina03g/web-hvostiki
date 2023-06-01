@@ -1,9 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
-const methodOverride = require('method-override');
-const multipart = require('connect-multiparty');
-const bodyParser = require('body-parser')
 const sequelize = require('./db')
 const models = require('./models/models')
 const router = require('./routes/index')
@@ -23,11 +20,11 @@ app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(fileUpload({}))
 
-app.use(methodOverride());
+//app.use(methodOverride());
 //app.use(multipart());
-app.use(bodyParser({keepExtensions:true, uploadDir:path.join(__dirname,'/files')}))
+//app.use(bodyParser({keepExtensions:true, uploadDir:path.join(__dirname,'/files')}))
 
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: true}))
 app.use('/api', router)
 app.use(errorHandler)
 

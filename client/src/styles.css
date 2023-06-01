@@ -95,6 +95,7 @@
 .card_style {
     width: 18rem;
     border: 0;
+    margin-bottom: 7%;
     outline-style: groove;
     outline-color: #ae0740;
 }
@@ -127,6 +128,12 @@
     justify-content: space-between;
     margin-top: 3%;
     background-color: #ae0740
+}
+.row_form_pets {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+    border-color: #ae0740
 }
 .blText_redBcgrnd {
     color: #140d33;

@@ -53,13 +53,16 @@ const TakePetForm = observer((param) => {
                     />
                     <Form.Control
                         className="placehldr"
-                        placeholder="Пол питомца"
+                        placeholder="Пол питомца: Мальчик или Девочка"
                         defaultValue={pet.pet_gender}
                     />
                     <Form.Control
                         className="placehldr"
                         placeholder="Возраст питомца"
                         defaultValue={pet.pet_age}
+                        type="number"
+                        min="0"
+
                     />
                     <Form.Control
                         className="placehldr"
@@ -72,12 +75,15 @@ const TakePetForm = observer((param) => {
                         placeholder="Ваш возраст"
                         value={age}
                         onChange={e => setAge(e.target.value)}
+                        type="number"
+                        min="0"
                     />
                     <Form.Control
                         className="placehldr"
                         placeholder="Ваш номер телефона"
                         value={phone}
                         onChange={e => setPhone(e.target.value)}
+                        type="tel"
                     />
                     <Form.Control
                         className="placehldr"

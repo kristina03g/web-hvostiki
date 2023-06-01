@@ -47,18 +47,21 @@ const RegistrationForm = observer(() => {
                         placeholder="Дата рождения"
                         value={bday}
                         onChange={e => setBday(e.target.value)}
+                        type="date"
                     />
                     <Form.Control
                         className="placehldr"
                         placeholder="Почта"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
+                        type="email"
                     />
                     <Form.Control
                         className="placehldr"
                         placeholder="Номер телефона"
                         value={phone}
                         onChange={e => setPhone(e.target.value)}
+                        type="tel"
                     />
                     <Form.Control
                         className="placehldr"

@@ -60,7 +60,7 @@ class RequestController {
 
     }
 
-    async addGiveRequestPet(req, res) {
+    /*async addGiveRequestPet(req, res) {
         console.log(req.files.pet_photo)
         const {pet_photo} = req.files
         let fileName = uuid.v4() + ".jpg"
@@ -93,7 +93,27 @@ class RequestController {
         const request = await Request.create(reqInfo)
         res.status(200).send(request)
 
-    }
+    }*/
+
+    async addGiveRequestPet(req, res) {
+            
+            let {pet_type, pet_name, pet_breed, pet_gender, pet_age, pet_illness, req_client_id, purpose} = req.body
+            let pet_status = 'В ожидании'
+            let request_type = 'Отдать'
+            let request_status = 'Принято'
+    
+            const {pet_photo} = req.files
+            let fileName = uuid.v4()+'.jpg'
+            pet_photo.mv(path.resolve(__dirname,'..','static', fileName))
+
+            const pet = await Pet.create({pet_type, pet_photo: fileName, pet_name, pet_breed, pet_gender, pet_age, pet_illness, pet_status})
+
+            let pet_id = pet.pet_id
+
+            const request = await Request.create({request_type, req_client_id, req_pet_id: pet_id, purpose, request_status})
+
+            return res.json(request)
+        }
 
 
     // еще 2. create give request

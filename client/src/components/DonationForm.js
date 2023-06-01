@@ -36,6 +36,8 @@ const DonationForm = observer(() => {
                         placeholder="Сумма пожертвования в рублях"
                         value={amount}
                         onChange={e => setAmount(e.target.value)}
+                        type="number"
+                        min="0"
                     />
                     <Form.Control
                         className="placehldr"
